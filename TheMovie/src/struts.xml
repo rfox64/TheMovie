@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.custom.i18n.resources" value="globalMessages" />
+	
+	<package name="emp" namespace="/emp" extends="struts-default">
+
+	    <action name="addEmp"   class="com.emp.controller.EmpAction"  method="add">
+	        <result name="success">/emp/listAllEmp.jsp</result>
+            <result name="input">/emp/addEmp.jsp</result>
+		</action>
+		
+		<action name="getOne_For_UpdateEmp"   class="com.emp.controller.EmpnoAction"  method="getOne_For_Update">
+	        <result name="success">/emp/update_emp_input.jsp</result>
+            <result name="input">/emp/listAllEmp.jsp</result>
+		</action>
+		
+		<action name="updateEmp"   class="com.emp.controller.EmpAction"  method="update">
+	        <result name="success">/emp/listOneEmp.jsp</result>
+            <result name="input">/emp/update_emp_input.jsp</result>
+		</action>
+		
+		<action name="deleteEmp"   class="com.emp.controller.EmpnoAction"  method="delete">
+	        <result name="success">/emp/listAllEmp.jsp</result>
+            <result name="input">/emp/listAllEmp.jsp</result>
+		</action>
+				
+		<action name="getOne_For_DisplayEmp"   class="com.emp.controller.EmpnoAction"  method="getOne_For_Display">
+	        <result name="success">/emp/listOneEmp.jsp</result>
+            <result name="input">/emp/select_page.jsp</result>
+		</action>
+		
+	</package>
+
+</struts>
