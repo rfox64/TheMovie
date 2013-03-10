@@ -18,11 +18,11 @@ public class RoundsVO implements java.io.Serializable{
 
 	@Id
 	@Column(name = "roundsID")
-	public Integer getRoundID() {
+	public Integer getRoundsID() {
 		return roundsID;
 	}
-	public void setRoundID(Integer roundID) {
-		this.roundsID = roundID;
+	public void setRoundsID(Integer roundsID) {
+		this.roundsID = roundsID;
 	}
 
 	@Column(name = "roomID")
@@ -43,11 +43,11 @@ public class RoundsVO implements java.io.Serializable{
 	
 
 	@Column(name = "roundsDateTime")
-	public Timestamp getRoundDateTime() {
+	public Timestamp getRoundsDateTime() {
 		return roundsDateTime;
 	}
-	public void setRoundDateTime(Timestamp roundDateTime) {
-		this.roundsDateTime = roundDateTime;
+	public void setRoundsDateTime(Timestamp roundsDateTime) {
+		this.roundsDateTime = roundsDateTime;
 	}
 	
 	@Column(name = "seat")
