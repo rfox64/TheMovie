@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.room.model.RoomVO" table="room">
+
+		<id name="roomID" column="roomID">
+			<generator class="identity"/>
+		</id>
+		<property name="theaID" column="theaID" />
+		<property name="roomName" column="roomName" />
+		<property name="seatTotalRow" column="seatTotalRow" />
+		<property name="seatTotalColumn" column="seatTotalColumn" />
+
+	</class>
+</hibernate-mapping>
+
