@@ -1,11 +1,5 @@
-/m0311test.class
 /com
-/GOGOGO.class
-/htest.class
-/monsterTest2.class
-/monstertest.class
-/seeeeya.class
-/hibernate.cfg.xml
-/ikooryiTest.class
-/struts.xml
-/xwork-conversion.properties
+/datetime
+/hibernate
+/misc
+/log4j.properties

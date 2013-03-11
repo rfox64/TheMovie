@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.movie.model.MovieVO" table="Movie">
+
+		<id name="mvID" column="mvID">
+			<generator class="identity" />
+		</id>
+
+		<property name="mvNameC" column="mvNameC" />
+		<property name="mvNameE" column="mvNameE" />
+		<property name="mvStartDate" column="mvStartDate" />
+		<property name="mvEndDate" column="mvEndDate" />
+		<property name="mvDirector" column="mvDirector" />
+		<property name="mvCast" column="mvCast" />
+		<property name="mvCom" column="mvCom" />
+		<property name="mvURL" column="mvURL" />
+		<property name="mvStory" column="mvStory" />
+		<property name="mvRank" column="mvRank" />
+		<property name="mvPreview" column="mvPreview" />
+		<property name="mvLevelID" column="mvLevelID" />
+		<property name="mvTypeID" column="mvTypeID" />
+		
+		
+
+		<set name="moviePICs" table="MoviePIC" lazy="false" cascade="all" inverse="true" order-by="mvPicID asc">
+			<key>
+				<column name="mvID" />
+			</key>
+			<one-to-many class="com.moviePIC.model.MoviePICVO" />
+		</set>
+
+	</class>
+</hibernate-mapping>
+
