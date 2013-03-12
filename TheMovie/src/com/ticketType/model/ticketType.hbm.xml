@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.rounds.model.TicketTypeVO" table="ticketType">
+
+		<id name="typeID" column="typeID">
+			<generator class="identity"/>
+		</id>
+		<property name="theaID" column="theaID" />
+		<property name="roomType" column="roomType" />
+		<property name="typeName" column="typeName" />
+		<property name="typePrice" column="typePrice" />
+		<property name="summary" column="summary" />
+
+	</class>
+</hibernate-mapping>
+

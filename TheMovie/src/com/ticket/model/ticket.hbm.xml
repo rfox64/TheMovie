@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.rounds.model.TicketVO" table="ticket">
+
+		<id name="ticketID" column="ticketID">
+			<generator class="identity"/>
+		</id>
+		<property name="roundsID" column="roundsID" />
+		<property name="seatRow" column="seatRow" />
+		<property name="seatColumn" column="seatColumn" />
+		<property name="seatName" column="seatName" />
+		<property name="mbID" column="mbID" />
+		<property name="salesID" column="salesID" />
+		<property name="soldDateTime" column="soldDateTime" />
+		<property name="orderedDateTime" column="orderedDateTime" />
+		<property name="typeID" column="typeID" />
+
+	</class>
+</hibernate-mapping>
+

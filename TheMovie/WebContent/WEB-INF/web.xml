@@ -9,4 +9,12 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+   <servlet>
+    <servlet-name>SalesServlet</servlet-name>
+    <servlet-class>com.sales.controller.SalesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SalesServlet</servlet-name>
+    <url-pattern>/sales/sales.do</url-pattern>
+  </servlet-mapping>
 </web-app>
