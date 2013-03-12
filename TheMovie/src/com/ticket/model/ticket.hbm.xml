@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="com.rounds.model.TicketVO" table="ticket">
+	<class name="com.ticket.model.TicketVO" table="ticket">
 
 		<id name="ticketID" column="ticketID">
 			<generator class="identity"/>

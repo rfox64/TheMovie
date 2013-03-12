@@ -20,11 +20,11 @@ public class TicketVO implements java.io.Serializable{
 	public void setSeatName(String seatName) {
 		this.seatName = seatName;
 	}
-	public Integer getTicket() {
+	public Integer getTicketID() {
 		return ticketID;
 	}
-	public void setTicket(Integer ticket) {
-		this.ticketID = ticket;
+	public void setTicketID(Integer ticketID) {
+		this.ticketID = ticketID;
 	}
 	public Integer getRoundsID() {
 		return roundsID;

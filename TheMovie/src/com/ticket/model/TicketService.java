@@ -16,7 +16,7 @@ public class TicketService {
 	public TicketVO addTicket(Integer ticketID, Integer roundsID, Integer seatRow, Integer seatColumn,
 		String	seatName, Integer mbID, Integer salesID, Timestamp soldDateTime, Timestamp orderedDateTime, Integer typeID){
 		TicketVO ticketVO = new TicketVO();
-		ticketVO.setTicket(ticketID);
+		ticketVO.setTicketID(ticketID);
 		ticketVO.setRoundsID(roundsID);
 		ticketVO.setSeatRow(seatRow);
 		ticketVO.setSeatColumn(seatColumn);
@@ -36,7 +36,7 @@ public class TicketService {
 	public TicketVO updateTicket(Integer ticketID, Integer roundsID, Integer seatRow, Integer seatColumn,
 			String	seatName, Integer mbID, Integer salesID, Timestamp soldDateTime, Timestamp orderedDateTime, Integer typeID) {
 		TicketVO ticketVO = new TicketVO();
-		ticketVO.setTicket(ticketID);
+		ticketVO.setTicketID(ticketID);
 		ticketVO.setRoundsID(roundsID);
 		ticketVO.setSeatRow(seatRow);
 		ticketVO.setSeatColumn(seatColumn);
@@ -51,7 +51,7 @@ public class TicketService {
 	
 	public TicketVO updateTicket(TicketVO ticketVO) {
 		dao.update(ticketVO);
-		return dao.selectByPK(ticketVO.getTicket());
+		return dao.selectByPK(ticketVO.getTicketID());
 	}
 	
 	public TicketVO selectByPKTicket(Integer ticketID){
