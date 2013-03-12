@@ -12,9 +12,9 @@
         <property name="theaID" column="theaID" />
         <property name="pic" column="pic" />
         
-        <many-to-one name="deptVO" class="com.dept.model.DeptVO" lazy="false">
-            <column name="deptno" />
-        </many-to-one>
+<!--         <many-to-one name="deptVO" class="com.dept.model.DeptVO" lazy="false"> -->
+<!--             <column name="deptno" /> -->
+<!--         </many-to-one> -->
         
     </class>
 </hibernate-mapping>
