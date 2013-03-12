@@ -27,7 +27,9 @@
 		<!--Java物件與資料庫表格的映射檔 -->
 		<mapping resource="com/rounds/model/rounds.hbm.xml" />
 		<mapping resource="com/room/model/room.hbm.xml" />
-		
+		<mapping resource="com/theater/model/theater.hbm.xml" />
+		<mapping resource="com/theaterpic/model/theaterpic.hbm.xml" />
+		<mapping resource="com/activity/model/activity.hbm.xml" />
 		<mapping resource="com/movie/model/movie.hbm.xml" />
 		<mapping resource="com/moviePIC/model/moviePIC.hbm.xml" />
 		<mapping resource="com/sales/model/sales2.hbm.xml" />
