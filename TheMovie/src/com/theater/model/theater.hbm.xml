@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.theater.model.TheaterVO" table="theater" >
+        
+        <id name="theaID" column="theaID">
+            <generator class="identity"/>
+        </id>
+        
+        <property name="theadName" column="theadName" />
+        <property name="cityID" column="cityID" />
+        <property name="regionID" column="regionID" />
+        <property name="address" column="address" />
+        <property name="phone" column="phone" />
+        <property name="summary" column="summary" />
+        <many-to-one name="deptVO" class="com.dept.model.DeptVO" lazy="false">
+            <column name="deptno" />
+        </many-to-one>
+        
+    </class>
+</hibernate-mapping>
+
