@@ -16,19 +16,19 @@ public class SqlDateConverter extends StrutsTypeConverter {
 		};
 		for (DateFormat df : SqlDateFormat)
 			try {
-				System.out.println("‚óèSqlDateConverter‚óè");
+				System.out.println("°¥SqlDateConverter°¥");
 				java.util.Date date = (java.util.Date) df.parse(values[0]);
 				return new java.sql.Date(date.getTime());
 			} catch (ParseException e) {
 				//e.printStackTrace();
-				//System.out.println("Invalid format - Ê†ºÁ§∫‰∏çÊ≠£Á¢∫");
-				//throw new TypeConversionException("Invalid format - Ê†ºÁ§∫‰∏çÊ≠£Á¢∫");
+				//System.out.println("Invalid format - ÆÊ•‹§£•øΩT");
+				//throw new TypeConversionException("Invalid format - ÆÊ•‹§£•øΩT");
 			}
 		return null;
 	}
 
 	public String convertToString(Map context, Object obj) {
-		System.out.println("‚óèSqlDateConverter To String‚óè");
+		System.out.println("°¥SqlDateConverter To String°¥");
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		return df.format(obj);
 	}

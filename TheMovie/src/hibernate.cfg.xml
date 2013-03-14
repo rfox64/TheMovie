@@ -33,6 +33,7 @@
 		<mapping resource="com/movie/model/movie.hbm.xml" />
 		<mapping resource="com/moviePIC/model/moviePIC.hbm.xml" />
 		<mapping resource="com/sales/model/sales2.hbm.xml" />
+		<mapping resource="com/member/model/Member.hbm.xml" />
 
 	</session-factory>
 	

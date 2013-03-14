@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.activity.model.ActivityVO" table="activity" >
+        
+        <id name="actID" column="actID">
+            <generator class="identity"/>
+        </id>
+        
+        <property name="actTitle" column="actTitle" />
+        <property name="summary" column="summary" />
+        <property name="startDateTime" column="startDateTime" />
+        <property name="endDateTime" column="endDateTime" />
+        
+<!--         <many-to-one name="deptVO" class="com.dept.model.DeptVO" lazy="false"> -->
+<!--             <column name="deptno" /> -->
+<!--         </many-to-one> -->
+        
+    </class>
+</hibernate-mapping>
+

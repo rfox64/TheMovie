@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.member.model.MemberVO" table="member">
+
+		<id name="mbID" column="mbID">
+			<generator class="identity" />
+		</id>
+
+		<property name="firstName" column="firstName" />
+		<property name="lastName" column="lastName" />
+		<property name="cityID" column="cityID" />
+		<property name="regionID" column="regionID" />
+		<property name="address" column="address" />
+		<property name="mobile" column="mobile" />
+		<property name="birthday" column="birthday" />
+		<property name="gender" column="gender" />
+		<property name="proID" column="proID" />
+		<property name="eduID" column="eduID" />
+		<property name="email" column="email" />
+		<property name="password" column="password" />
+		<property name="activation" column="activation" />
+		<property name="inactivationD" column="inactivationD" />
+
+
+		<!-- <many-to-one name="deptVO" class="com.dept.model.DeptVO" lazy="false"> -->
+		<!-- <column name="deptno" /> -->
+		<!-- </many-to-one> -->
+
+	</class>
+</hibernate-mapping>
+

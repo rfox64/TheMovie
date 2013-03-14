@@ -16,19 +16,19 @@ public class UtilDateConverter extends StrutsTypeConverter {
 		};
 		for (DateFormat df : UtilDateFormat)
 			try {
-				System.out.println("‚óèUtilDateConverter‚óè");
+				System.out.println("°¥UtilDateConverter°¥");
 				java.util.Date date = (java.util.Date) df.parse(values[0]);
 				return date;
 			} catch (ParseException e) { 
 				//e.printStackTrace();
-				//System.out.println("Invalid format - Ê†ºÁ§∫‰∏çÊ≠£Á¢∫");
-				//throw new TypeConversionException("Invalid format - Ê†ºÁ§∫‰∏çÊ≠£Á¢∫");
+				//System.out.println("Invalid format - ÆÊ•‹§£•øΩT");
+				//throw new TypeConversionException("Invalid format - ÆÊ•‹§£•øΩT");
 			}
 		return null;
 	}
 
 	public String convertToString(Map context, Object obj) {
-		System.out.println("‚óèUtilDateConverter To String‚óè");
+		System.out.println("°¥UtilDateConverter To String°¥");
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		return df.format(obj);
 	}

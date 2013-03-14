@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.region.model.RegionVO" table="region">
+
+		<id name="regionID" column="regionID">
+			<!-- <generator class="identity"/> -->
+		</id>
+
+		<property name="cityID" column="cityID" />
+		<property name="regionID" column="regionID" />
+		<property name="regionname" column="regionname" />
+
+		<!-- <many-to-one name="deptVO" class="com.dept.model.DeptVO" -->
+		<!-- lazy="false"> -->
+		<!-- <column name="deptno" /> -->
+		<!-- </many-to-one> -->
+
+	</class>
+</hibernate-mapping>
+

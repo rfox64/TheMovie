@@ -16,19 +16,19 @@ public class TimestampConverter extends StrutsTypeConverter {
 		};
 		for (DateFormat df : TimestampFormat)
 			try {
-				System.out.println("‚óèTimestampConverter‚óè");
+				System.out.println("°¥TimestampConverter°¥");
 				java.util.Date date = (java.util.Date) df.parse(values[0]);
 				return new java.sql.Timestamp(date.getTime());
 			} catch (ParseException e) { 
 				//e.printStackTrace();
-				//System.out.println("Invalid format - Ê†ºÁ§∫‰∏çÊ≠£Á¢∫");
-				//throw new TypeConversionException("Invalid format - Ê†ºÁ§∫‰∏çÊ≠£Á¢∫");
+				//System.out.println("Invalid format - ÆÊ•‹§£•øΩT");
+				//throw new TypeConversionException("Invalid format - ÆÊ•‹§£•øΩT");
 			}
 		return null;
 	}
 
 	public String convertToString(Map context, Object obj) {
-		System.out.println("‚óèTimestampConverter To String‚óè");
+		System.out.println("°¥TimestampConverter To String°¥");
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		return df.format(obj);
 	}
