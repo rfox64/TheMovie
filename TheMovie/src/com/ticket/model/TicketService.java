@@ -54,6 +54,10 @@ public class TicketService {
 		return dao.selectByPK(ticketVO.getTicketID());
 	}
 	
+	public void deleteTicket(Integer ticketID) {
+		dao.delete(ticketID);
+	}
+	
 	public TicketVO selectByPKTicket(Integer ticketID){
 		return dao.selectByPK(ticketID);
 	}

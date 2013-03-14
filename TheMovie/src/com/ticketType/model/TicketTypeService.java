@@ -50,6 +50,10 @@ public class TicketTypeService {
 		return dao.selectByPK(typeID);
 	}
 	
+	public void deleteTicketType(Integer typeID) {
+		dao.delete(typeID);
+	}
+	
 	public List<TicketTypeVO> getAll() {
 		return dao.selectAll();
 	}

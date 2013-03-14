@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC
+        "-//Apache Struts//XWork Validator 1.0.2//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+
+<validators>
+	<field name="empVO.ename">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param><!-- 預設為true -->
+			<message>員工姓名: 請勿空白</message>
+		</field-validator>
+		
+		<field-validator type="regex">
+			<param name="expression"><![CDATA[([\u4e00-\u9fa5\w]{2,10})]]></param>
+			<message>員工姓名:只能是中、英文字母、數字和_ , 且長度必需在2到10之間</message>
+		</field-validator>
+	</field>
+
+	<field name="empVO.job">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param><!-- 預設為true -->
+			<message>員工職位: 請勿空白</message>
+		</field-validator>
+		<field-validator type="stringlength">
+			<param name="minLength">2</param>
+			<message>員工職位: 最少為兩個字</message>
+		</field-validator>
+	</field>
+
+	<field name="empVO.hiredate">
+		<field-validator type="required">
+			<message>雇用日期: 請勿空白</message>
+		</field-validator>
+		<field-validator type="date">
+			<param name="min">1900-01-01</param>
+			<param name="max">2012-12-30</param>
+			<message>雇用日期應在1900-01-01到2012-12-30之間！</message>
+		</field-validator>
+	</field>
+
+	<field name="empVO.sal">
+		<field-validator type="required">
+			<message>員工薪水: 請勿空白-請輸入數字</message>
+		</field-validator>
+		<field-validator type="double">
+			<param name="minInclusive">100</param>
+			<param name="maxInclusive">10000</param>
+			<message>員工薪水: 請介於${minInclusive}與${maxInclusive}之間</message>
+		</field-validator>
+	</field>
+
+	<field name="empVO.comm">
+		<field-validator type="required">
+			<message>員工獎金: 請勿空白-請輸入數字</message>
+		</field-validator>
+		<field-validator type="double">
+			<param name="minInclusive">0</param>
+			<param name="maxInclusive">10000</param>
+			<message>員工薪水: 請介於${minInclusive}與${maxInclusive}之間</message>
+		</field-validator>
+	</field>
+
+	<field name="empVO.deptVO.deptno">
+		<field-validator type="required">
+			<message>員工部門: 請勿空白-請輸入數字</message>
+		</field-validator>
+		<field-validator type="int">
+			<param name="min">10</param>
+			<param name="max">90</param>
+			<message>員工部門: 請介於${min}與${max}之間</message>
+		</field-validator>
+	</field>
+
+</validators>

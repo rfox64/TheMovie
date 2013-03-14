@@ -7,6 +7,8 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import com.ticketType.model.TicketTypeVO;
+
 
 
 public class TicketDAO implements TicketDAO_interface {
@@ -73,6 +75,24 @@ public class TicketDAO implements TicketDAO_interface {
 	}
 	
 	public static void main(String[] args) {
+		
+	}
+
+	@Override
+	public void delete(Integer ticketID) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+
+			TicketVO ticketVO = new TicketVO();
+			ticketVO.setTypeID(ticketID);
+			session.delete(ticketVO);
+
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
 		
 	}
 }

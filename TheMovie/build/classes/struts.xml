@@ -7,34 +7,94 @@
 
 	<constant name="struts.devMode" value="true" />
 	<constant name="struts.custom.i18n.resources" value="globalMessages" />
-	
-	<package name="emp" namespace="/emp" extends="struts-default">
 
-	    <action name="addEmp"   class="com.emp.controller.EmpAction"  method="add">
-	        <result name="success">/emp/listAllEmp.jsp</result>
-            <result name="input">/emp/addEmp.jsp</result>
+	<!--※不受驗證控制的Action(不同package) -->
+	<package name="loginPackage" namespace="/login" extends="struts-default">
+		<action name="loginHandler" class="login.action.LoginHandler">
+<!-- 			<result name="success">/login_success.jsp</result> -->
+			<result name="success">/member/listAllMember.jsp</result>
+			<result name="login">/login.jsp</result>
 		</action>
-		
-		<action name="getOne_For_UpdateEmp"   class="com.emp.controller.EmpnoAction"  method="getOne_For_Update">
-	        <result name="success">/emp/update_emp_input.jsp</result>
-            <result name="input">/emp/listAllEmp.jsp</result>
-		</action>
-		
-		<action name="updateEmp"   class="com.emp.controller.EmpAction"  method="update">
-	        <result name="success">/emp/listOneEmp.jsp</result>
-            <result name="input">/emp/update_emp_input.jsp</result>
-		</action>
-		
-		<action name="deleteEmp"   class="com.emp.controller.EmpnoAction"  method="delete">
-	        <result name="success">/emp/listAllEmp.jsp</result>
-            <result name="input">/emp/listAllEmp.jsp</result>
-		</action>
-				
-		<action name="getOne_For_DisplayEmp"   class="com.emp.controller.EmpnoAction"  method="getOne_For_Display">
-	        <result name="success">/emp/listOneEmp.jsp</result>
-            <result name="input">/emp/select_page.jsp</result>
-		</action>
-		
 	</package>
 
+	<!--●受驗證控制的Action(整個package的設定方式) -->
+	<package name="member" namespace="/member" extends="struts-default">
+
+		<interceptors>
+
+			<!--定義一個名為authentication的自定攔截器 -->
+			<interceptor class="login.interceptor.AuthenticationInterceptor"
+				name="authentication" />
+
+			<!--定義一個驗證登入的攔截器堆疊 -->
+			<interceptor-stack name="myAuthenticationDefault">
+				<interceptor-ref name="defaultStack" />         <!--堆疊內設定原Struts2內建的: 預設攔截器堆疊 -->
+				<interceptor-ref name="authentication" />     <!--堆疊內設定前述名為authentication的: 自定攔截器 -->
+			</interceptor-stack>
+
+		</interceptors>
+
+		<!-- 作用到此<package>內所有的Action物件 -->
+		<default-interceptor-ref name="myAuthenticationDefault" />
+
+		<global-results>
+			<result name="login">/login.jsp</result>
+		</global-results>
+
+		<action name="addMember" class="com.member.controller.MemberAction"
+			method="add">
+			<result name="success">/member/listAllMember.jsp</result>
+			<result name="input">/member/addMember.jsp</result>
+		</action>
+
+		<action name="getOne_For_UpdateMember" class="com.member.controller.MbIDAction"
+			method="getOne_For_Update">
+			<result name="success">/member/update_member_input.jsp</result>
+			<result name="input">/member/listAllMember.jsp</result>
+		</action>
+
+		<action name="updateMember" class="com.member.controller.MemberAction"
+			method="update">
+			<result name="success">/member/listOneMember.jsp</result>
+			<result name="input">/member/update_member_input.jsp</result>
+		</action>
+
+		<action name="deleteMember" class="com.member.controller.MbIDAction"
+			method="delete">
+			<result name="success">/member/listAllMember.jsp</result>
+			<result name="input">/member/listAllMember.jsp</result>
+		</action>
+
+		<action name="getOne_For_DisplayMember" class="com.member.controller.MbIDAction"
+			method="getOne_For_Display">
+			<result name="success">/member/listOneMember.jsp</result>
+			<result name="input">/member/select_page.jsp</result>
+		</action>
+
+		<!-- Struts 2 的 Best Practice 建議: 就算是最基本的HTTP Request都應該交給 Struts 2 系統處理 
+			步驟1: 先用下面的<action name="*" >設定之 步驟2: 再使用下面URL(xxx.action)來呼叫xxx.jsp : http://localhost:8081/Struts2_ch8_Login_Interceptor/emp/xxx.action 
+			最後3: 就可以先經由Struts 2 系統處理後, 才去呼叫xxx.jsp -->
+
+		<!-- 如果沒有class屬性代表沒有execute()方法 -->
+		<!-- 目前因為有此設定，所以 authentication的自定攔截器才能作用於所有JSP -->
+		<action name="*">
+			<result>/emp/{1}.jsp</result>                      <!-- 沒有name屬性代表name="sucess" -->
+		</action>
+	</package>
+
+
+	<!--※不受驗證控制的Action(不同package) -->
+<!-- 	<package name="freePckage" namespace="/free" extends="struts-default"> -->
+<!-- 		<action name="HelloWorld" class="myFreeAction.HelloWorld"> -->
+<!-- 			<result>/free/HelloWorld.jsp</result> -->
+<!-- 		</action> -->
+<!-- 	</package> -->
+	
+
+
+	
+
+
+
 </struts>
+

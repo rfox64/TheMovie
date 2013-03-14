@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC
+        "-//Apache Struts//XWork Validator 1.0.2//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+
+<validators>
+
+	<field name="empno">
+		<field-validator type="required">
+			<message>輸入員工編號 (如7001): 請勿空白-請輸入數字</message>
+		</field-validator>
+		<field-validator type="int">
+			<param name="min">7001</param>
+			<param name="max">7999</param>
+			<message>輸入員工編號 (如7001): 請介於${min}與${max}之間</message>
+		</field-validator>
+	</field>
+
+</validators>

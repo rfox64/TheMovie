@@ -7,7 +7,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import com.ticket.model.TicketVO;
+
 
 public class TicketTypeDAO implements TicketTypeDAO_interface {
 	private static final String GET_ALL_STMT = "from TicketTypeVO order by typeID";
@@ -72,6 +72,25 @@ public class TicketTypeDAO implements TicketTypeDAO_interface {
 		return list;
 	}
 
+	
+	@Override
+	public void delete(Integer typeID) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+
+			TicketTypeVO ticketTypeVO = new TicketTypeVO();
+			ticketTypeVO.setTypeID(typeID);
+			session.delete(ticketTypeVO);
+
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		
+	}
+	
 	/**
 	 * @param args
 	 */
@@ -79,5 +98,7 @@ public class TicketTypeDAO implements TicketTypeDAO_interface {
 		// TODO Auto-generated method stub
 
 	}
+
+	
 
 }
