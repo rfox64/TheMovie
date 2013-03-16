@@ -31,12 +31,15 @@
 <style type="text/css">
 
 
+
+
+
 body{
 	height: 100%;
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
 	font-size: 12px;
 	margin: 45px;
-	width: 1920px;
+	width: 1050px;
 	border-collapse: collapse;
 	position: relative;
 }
@@ -47,16 +50,71 @@ div{
 }
 
 
+
+fieldset {
+	border:0;
+	padding:15px;
+	margin-bottom:10px;
+	background:#EEE;
+
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+
+	background:-webkit-liner-gradient(top,#EEEEEE,#FFFFFF);
+	background:linear-gradient(top,#EFEFEF,#FFFFFF);
+
+	box-shadow:3px 3px 10px #666;
+	-moz-box-shadow:3px 3px 10px #666;
+	-webkit-box-shadow:3px 3px 10px #666;
+
+	position:relative;
+	top:10px;
+	
+	font-size: 14px;
+	
+	}
+
+legend {
+	padding:5px 5px;
+	background-color:#4F709F;
+	color:#FFF;
+
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+
+	box-shadow:2px 2px 4px #666;
+	-moz-box-shadow:2px 2px 4px #666;
+	-webkit-box-shadow:2px 2px 4px #666;
+
+	position:absolute;
+	left:10px;top:-10px;
+	}
+
+
+
+
+
+
+
+
 li{
 	list-style: none;	
 }
 
 
+
+
+
+
+
+
 .container{
-	width: 1920px;
+	width: 1050px;
 	float: left;
 	margin: 50px 10px 10px;
-	padding: 20px;
+	padding: 5px;
 	background-colorr: rgb(128, 128, 128);
 }
 
@@ -98,7 +156,7 @@ li{
 </head>
 <body>
 
-<h3>Select Movie Table Result : ${fn:length(select)} row(s) selected</h3>
+<%-- <h3>Select Movie Table Result : ${fn:length(select)} row(s) selected</h3> --%>
 
 
 
@@ -108,30 +166,7 @@ li{
 	    <div id="pajinate" class="container">
 	    	<div class="page_navigation"></div>
 
-<table>
-
-	<thead>
-	<tr>
-		<th>mvID</th>
-		<th>片名（中文）</th>
-		<th>片名（外文）</th>
-		<th>電影劇照</th>
-		<th>上映日期</th>
-		<th>下映日期</th>
-		<th>導　　演</th>
-		<th>演　　員</th>
-		<th>發行公司</th>
-		<th>官方網站</th>
-		<th>劇情簡介</th>
-		<th>評分星星</th>
-		<th>預 告 片</th>
-		<th>分　　級</th>
-		<th>IMAX數位3D</th>
-	</tr>
-	</thead>
-</table>
 	<ul class="content">
-	
 	
 	<c:forEach var="row" items="${select}">
 	<li>
@@ -152,25 +187,30 @@ li{
 			<c:param name="mvLevelID" value="${row.mvLevelID}" />
 			<c:param name="mvTypeID" value="${row.mvTypeID}" />
 		</c:url>
-<table>
-	<tr>
-		<td><a href="${link}">${row.mvID}</a></td>
-		<td><a href="${link}">${row.mvNameC}</a></td>
-		<td><a href="${link}">${row.mvNameE}</a></td>
-		<td><a href="${link}"><img border="0" alt="電影封面" height='180' src="../MoviePIC/<fmt:formatNumber minIntegerDigits='2' value='${row.mvID}' />01.jpg"></a></td>
-		<td>${row.mvStartDate}</td>
-		<td>${row.mvEndDate}</td>
-		<td>${row.mvDirector}</td>
-		<td>${row.mvCast}</td>
-		<td>${row.mvCom}</td>
-		<td>${row.mvURL}</td>
-		<td>${row.mvStory}</td>
-		<td>${row.mvRank}</td>
-		<td>${row.mvPreview}</td>
-		<td>${row.mvLevelID}</td>
-		<td>${row.mvTypeID}</td>
-	</tr>
-	</table>
+		
+		<fieldset><legend>${row.mvNameC}</legend>
+		<br>
+<a href="${link}">${row.mvNameE}</a><br>
+<a href="${link}"><img alt="電影封面" height='220' src="../MoviePIC/<fmt:formatNumber minIntegerDigits='2' value='${row.mvID}' />01.jpg"></a><br>
+上映日期:<fmt:formatDate value="${row.mvStartDate}" dateStyle="full"/><br>
+<br>
+導　　演：${row.mvDirector}<br>
+演　　員：${row.mvCast}<br>
+<textarea rows="5" cols="118">劇情簡介：${row.mvStory}</textarea>
+
+<hr>
+		</fieldset>
+
+		
+		
+<input type="hidden" value="${row.mvID}">
+<input type="hidden" value="${row.mvCom}">
+<input type="hidden" value="${row.mvURL}">
+<input type="hidden" value="${row.mvRank}">
+<input type="hidden" value="${row.mvPreview}">
+<input type="hidden" value="${row.mvLevelID}">
+<input type="hidden" value="${row.mvTypeID}">
+
 	</li>
 	</c:forEach>
 	
