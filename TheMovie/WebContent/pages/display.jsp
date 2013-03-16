@@ -65,7 +65,7 @@
             <div data-role="header" data-position="fixed" data-theme="b" data-content-theme="b" >
                 <a data-role="button" data-rel="back"
                    data-icon="back" data-iconpos="left">
-                                                電影資訊
+                   電影資訊
                 </a>
                 <h2>電影介紹</h2>
             </div>
@@ -75,6 +75,7 @@
             
                 <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="b">
                     <h3>${row.mvNameC}（${row.mvNameE}）</h3>
+                    <p><img alt="電影分級" src="../MoviePIC/LevelID_icon/${row.mvLevelID}.gif"></p>
                     <p><img alt="電影封面圖1" height='220' src="../MoviePIC/<fmt:formatNumber minIntegerDigits='2' value='${row.mvID}' />01.jpg"></p>
                     <p>上映日期:<fmt:formatDate value="${row.mvStartDate}" dateStyle="full"/></p>
                 </div>
