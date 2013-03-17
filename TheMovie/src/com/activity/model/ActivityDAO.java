@@ -9,22 +9,21 @@ import org.hibernate.Session;
 
 import com.theater.model.TheaterVO;
 
-public class ActivityDAO implements ActivityDAO_interface{
-	private static final String GET_ALL_STMT = "from ActivityVO order by theaID";
-	private static final String GET_ActTitle_SMT="select actTitle from ActivityVO";
+public class ActivityDAO implements Activity_interface{
+
+	private static final String GET_ALL_STMT = "from ActivityVO order by actID";
 	@Override
 	public void insert(ActivityVO actVO) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-	
+		try {
+			session.beginTransaction();
+			session.saveOrUpdate(actVO);
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
 		
-			try {
-				session.beginTransaction();
-				session.saveOrUpdate(actVO);
-				session.getTransaction().commit();
-			} catch (RuntimeException ex) {
-				session.getTransaction().rollback();
-				throw ex;
-			}
 	}
 
 	@Override
@@ -87,19 +86,4 @@ public class ActivityDAO implements ActivityDAO_interface{
 		
 	}
 
-	@Override
-	public List<ActivityVO> getActTitle() {
-		List<ActivityVO> list = null;
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		try {
-			session.beginTransaction();
-			Query query = session.createQuery(GET_ActTitle_SMT);
-			list = query.list();
-			session.getTransaction().commit();
-		} catch (RuntimeException ex) {
-			session.getTransaction().rollback();
-			throw ex;
-		}
-		return list;
-	}
 }

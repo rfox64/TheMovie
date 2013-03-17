@@ -1,36 +1,56 @@
 package com.theater.model;
 
+import com.city.model.CityVO;
+import com.region.model.RegionVO;
+
 public class TheaterVO implements java.io.Serializable{
-	private int theaID;
-	private String theadName;
-	private int cityID;
-	private int regionID;
+	private Integer theaID;
+	private String theaName;
+	private Integer cityID;
+	private Integer regionID;
 	private String address;
-	private int phone;
+	private String phone;
 	private String summary;
+	private String traffic;
+	private CityVO cityVO;
+	private RegionVO regionVO;
 	
-	public int getTheaID() {
+	
+	public CityVO getCityVO() {
+		return cityVO;
+	}
+	public void setCityVO(CityVO cityVO) {
+		this.cityVO = cityVO;
+	}
+	public RegionVO getRegionVO() {
+		return regionVO;
+	}
+	public void setRegionVO(RegionVO regionVO) {
+		this.regionVO = regionVO;
+	}
+	public Integer getTheaID() {
 		return theaID;
 	}
-	public void setTheaID(int theaID) {
+	public void setTheaID(Integer theaID) {
 		this.theaID = theaID;
 	}
-	public String getTheadName() {
-		return theadName;
+	
+	public String getTheaName() {
+		return theaName;
 	}
-	public void setTheadName(String theadName) {
-		this.theadName = theadName;
+	public void setTheaName(String theaName) {
+		this.theaName = theaName;
 	}
-	public int getCityID() {
+	public Integer getCityID() {
 		return cityID;
 	}
-	public void setCityID(int cityID) {
+	public void setCityID(Integer cityID) {
 		this.cityID = cityID;
 	}
-	public int getRegionID() {
+	public Integer getRegionID() {
 		return regionID;
 	}
-	public void setRegionID(int regionID) {
+	public void setRegionID(Integer regionID) {
 		this.regionID = regionID;
 	}
 	public String getAddress() {
@@ -39,10 +59,10 @@ public class TheaterVO implements java.io.Serializable{
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 	public String getSummary() {
@@ -51,6 +71,15 @@ public class TheaterVO implements java.io.Serializable{
 	public void setSummary(String summary) {
 		this.summary = summary;
 	}
+	public String getTraffic() {
+		return traffic;
+	}
+	public void setTraffic(String traffic) {
+		this.traffic = traffic;
+	}
+	
+	
+	
 	
 	
 }
