@@ -1,20 +1,21 @@
 package com.ticketType.model;
 
+import com.theater.model.TheaterVO;
+
 public class TicketTypeVO implements java.io.Serializable{
 	private Integer typeID;
-	private Integer theaID;
 	private Integer roomType;
 	private String typeName;
 	private Double typePrice;
 	private String summary;
-
-
+	private TheaterVO theaterVO;
 	
-	public Integer getTheaID() {
-		return theaID;
+	
+	public Integer getTypeID() {
+		return typeID;
 	}
-	public void setTheaID(Integer theaID) {
-		this.theaID = theaID;
+	public void setTypeID(Integer typeID) {
+		this.typeID = typeID;
 	}
 	public Integer getRoomType() {
 		return roomType;
@@ -23,13 +24,6 @@ public class TicketTypeVO implements java.io.Serializable{
 		this.roomType = roomType;
 	}
 	
-
-	public Integer getTypeID() {
-		return typeID;
-	}
-	public void setTypeID(Integer typeID) {
-		this.typeID = typeID;
-	}
 
 	public String getTypeName() {
 		return typeName;
@@ -49,6 +43,13 @@ public class TicketTypeVO implements java.io.Serializable{
 	public void setSummary(String summary) {
 		this.summary = summary;
 	}
+	public TheaterVO getTheaterVO() {
+		return theaterVO;
+	}
+	public void setTheaterVO(TheaterVO theaterVO) {
+		this.theaterVO = theaterVO;
+	}
+
 	
   
 }

@@ -1,0 +1,76 @@
+﻿要運行ticketType整套CURD   需要配合的部分  git中我只動改動我負責的ticketType
+
+
+theater model中需要修改了下面四個檔
+
+TheaterDAO_interface,
+TheaterDAO,
+TheaterVO,
+theater.hbm.xml
+
+
+TheaterDAO_interface.java 增加 method
+		public Set<TicketTypeVO> getTicketTypeByTheaID(Integer theaID)
+		 
+ 
+ 
+TheaterDAO.java  覆寫  TheaterDAO_interface  的   getTicketTypeByTheaID 方法
+	 public Set<TicketTypeVO> getTicketTypeByTheaID(Integer theaID) {
+			Set<TicketTypeVO>	set = findByPrimaryKey(theaID).getTicketTypes();
+			return set;
+		}
+	
+TheaterVO.java 中增加變數
+	private Set<TicketTypeVO> ticketTypes = new HashSet<TicketTypeVO>();
+	public Set<TicketTypeVO> getTicketTypes() {
+		return ticketTypes;
+	}
+	public void setTicketTypes(Set<TicketTypeVO> ticketTypes) {
+		this.ticketTypes = ticketTypes;
+	}
+	
+	
+
+theater.hbm.xml 中class內增加 
+		<set name="ticketTypes" table="ticketType" lazy="false" cascade="all"  inverse="true"  order-by="typeID asc">			
+			<key>
+				<column name="theaID" />
+			</key>
+			<one-to-many class="com.ticketType.model.TicketTypeVO" />
+		</set>
+		
+
+大家共同的部分在
+struts.xml中增加
+			<package name="ticketType" namespace="/ticketType" extends="struts-default">
+			
+				    <action name="addTicketType"   class="com.ticketType.controller.TicketTypeAction"  method="add">
+				        <result name="success">/ticketType/listAllTicketType.jsp</result>
+			            <result name="input">/ticketType/addTicketType.jsp</result>
+					</action>
+					
+					<action name="getOne_For_UpdateTicketType"   class="com.ticketType.controller.TypeIDAction"  method="getOne_For_Update">
+				        <result name="success">/ticketType/update_TicketType_input.jsp</result>
+			            <result name="input">/ticketType/listAllTicketType.jsp</result>
+					</action>
+					
+					<action name="updateTicketType"   class="com.ticketType.controller.TicketTypeAction"  method="update">
+				        <result name="success">/ticketType/listOneTicketType.jsp</result>
+			            <result name="input">/ticketType/update_TicketType_input.jsp</result>
+					</action>
+					
+					<action name="deleteTicketType"   class="com.ticketType.controller.TypeIDAction"  method="delete">
+				        <result name="success">/ticketType/listAllTicketType.jsp</result>
+			            <result name="input">/ticketType/listAllTicketType.jsp</result>
+					</action>
+							
+					<action name="getOne_For_DisplayTicketType"   class="com.ticketType.controller.TypeIDAction"  method="getOne_For_Display">
+				        <result name="success">/ticketType/listOneTicketType.jsp</result>
+			            <result name="input">/ticketType/select_page.jsp</result>
+					</action>
+				</package>
+				
+				
+hibernate.cfg.xml中 ticketType需要mapping下面兩行
+		<mapping resource="com/ticketType/model/ticketType.hbm.xml" />
+		<mapping resource="com/theater/model/theater.hbm.xml" />

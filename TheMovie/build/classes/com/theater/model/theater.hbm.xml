@@ -9,12 +9,21 @@
             <generator class="identity"/>
         </id>
         
-        <property name="theadName" column="theadName" />
-        <property name="cityID" column="cityID" />
-        <property name="regionID" column="regionID" />
+        <property name="theaName" column="theaName" />
+        
+        
         <property name="address" column="address" />
         <property name="phone" column="phone" />
         <property name="summary" column="summary" />
+        <property name="traffic" column="traffic" />
+        
+        <many-to-one name="cityVO" class="com.city.model.CityVO" lazy="false">
+        	<column name="cityID"/>
+        </many-to-one>
+        
+        <many-to-one name="regionVO" class="com.region.model.RegionVO" lazy="false">
+        	<column name="RegionID"/>
+        </many-to-one>
 <!--         <many-to-one name="deptVO" class="com.dept.model.DeptVO" lazy="false"> -->
 <!--             <column name="deptno" /> -->
 <!--         </many-to-one> -->

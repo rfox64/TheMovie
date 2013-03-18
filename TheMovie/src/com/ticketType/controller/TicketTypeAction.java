@@ -1,4 +1,4 @@
-﻿package com.ticketType.controller;
+package com.ticketType.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -27,9 +27,9 @@ public class TicketTypeAction extends ActionSupport {
 	
 	public String update() {
 		TicketTypeService ticketTypeSvc = new TicketTypeService();
-		TicketTypeVO ticketTypeSvcVO2 = ticketTypeSvc.updateTicketType(ticketTypeVO);
+		TicketTypeVO ticketTypeVO2 = ticketTypeSvc.updateTicketType(ticketTypeVO);
 		HttpServletRequest request = ServletActionContext.getRequest();
-		request.setAttribute("ticketTypeSvcVO", ticketTypeSvcVO2);
+		request.setAttribute("ticketTypeVO", ticketTypeVO2);
 		System.out.println("  資料庫 update 成功");
 		return "success";
 	}

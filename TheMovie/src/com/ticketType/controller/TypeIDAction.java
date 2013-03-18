@@ -1,4 +1,4 @@
-﻿package com.ticketType.controller;
+package com.ticketType.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -40,19 +40,20 @@ public class TypeIDAction extends ActionSupport {
 	}
 
 	public boolean getOne() {
-		TicketTypeService TicketTypeSvc = new TicketTypeService();
-		TicketTypeVO ticketTypeVO = TicketTypeSvc.selectByPKTicketType(typeID);
+		TicketTypeService ticketTypeSvc = new TicketTypeService();
+		TicketTypeVO ticketTypeVO = ticketTypeSvc.selectByPKTicketType(typeID);
+		System.out.println(typeID);
 		if (ticketTypeVO != null) {
 			HttpServletRequest request = ServletActionContext.getRequest();
-			request.setAttribute("TicketTypeVO", ticketTypeVO);
+			request.setAttribute("ticketTypeVO", ticketTypeVO);
 			return true;
 		} else
 			return false;
 	}
 
 	public String delete() {
-		TicketTypeService TicketTypeSvc = new TicketTypeService();
-		TicketTypeSvc.deleteTicketType(typeID);
+		TicketTypeService ticketTypeSvc = new TicketTypeService();
+		ticketTypeSvc.deleteTicketType(typeID);
 		System.out.println(" 資料庫 delete 成功");
 		return "success";
 	}

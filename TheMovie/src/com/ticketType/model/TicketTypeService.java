@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.ticketType.model.TicketTypeDAO;
 import com.ticketType.model.TicketTypeDAO_interface;
+import com.theater.model.TheaterVO;
 
 public class TicketTypeService {
 	
@@ -13,15 +14,17 @@ public class TicketTypeService {
 		dao = new TicketTypeDAO();
 	}
 	
-	public TicketTypeVO addTicketType(Integer typeID,Integer theaID,
+	public TicketTypeVO addTicketType(Integer theaID,
 			Integer roomType, String typeName, Double typePrice, String summary){
-		TicketTypeVO ticketTypeVO = new TicketTypeVO();
-		ticketTypeVO.setTypeID(typeID);
-		ticketTypeVO.setTheaID(theaID);
+		TicketTypeVO ticketTypeVO = new TicketTypeVO();;
 		ticketTypeVO.setRoomType(roomType);
 		ticketTypeVO.setTypeName(typeName);
 		ticketTypeVO.setTypePrice(typePrice);
 		ticketTypeVO.setSummary(summary);
+		TheaterVO theaterVO =new TheaterVO();
+		theaterVO.setTheaID(theaID);
+		ticketTypeVO.setTheaterVO(theaterVO);
+		dao.insert(ticketTypeVO);
 		return ticketTypeVO;
 	} 
 	
@@ -33,11 +36,14 @@ public class TicketTypeService {
 			Integer roomType, String typeName, Double typePrice, String summary) {
 		TicketTypeVO ticketTypeVO = new TicketTypeVO();
 		ticketTypeVO.setTypeID(typeID);
-		ticketTypeVO.setTheaID(theaID);
 		ticketTypeVO.setRoomType(roomType);
 		ticketTypeVO.setTypeName(typeName);
 		ticketTypeVO.setTypePrice(typePrice);
 		ticketTypeVO.setSummary(summary);
+		TheaterVO theaterVO =new TheaterVO();
+		theaterVO.setTheaID(theaID);
+		ticketTypeVO.setTheaterVO(theaterVO);
+		dao.update(ticketTypeVO);
 		return dao.selectByPK(typeID);
 	}
 	

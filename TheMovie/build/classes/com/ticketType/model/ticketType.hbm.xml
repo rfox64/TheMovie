@@ -8,11 +8,14 @@
 		<id name="typeID" column="typeID">
 			<generator class="identity"/>
 		</id>
-		<property name="theaID" column="theaID" />
 		<property name="roomType" column="roomType" />
 		<property name="typeName" column="typeName" />
 		<property name="typePrice" column="typePrice" />
 		<property name="summary" column="summary" />
+		
+		<many-to-one name="theaterVO" class="com.theater.model.TheaterVO" lazy="false">
+            <column name="theaID" />
+        </many-to-one>
 
 	</class>
 </hibernate-mapping>

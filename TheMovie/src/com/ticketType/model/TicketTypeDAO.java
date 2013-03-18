@@ -8,7 +8,6 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 
-
 public class TicketTypeDAO implements TicketTypeDAO_interface {
 	private static final String GET_ALL_STMT = "from TicketTypeVO order by typeID";
 	@Override
@@ -31,7 +30,7 @@ public class TicketTypeDAO implements TicketTypeDAO_interface {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			session.saveOrUpdate(ticketTypeVO);
+			session.update(ticketTypeVO);
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
@@ -96,6 +95,22 @@ public class TicketTypeDAO implements TicketTypeDAO_interface {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
+		TicketTypeDAO dao = new TicketTypeDAO();
+		List<TicketTypeVO> list = dao.selectAll();
+		for (TicketTypeVO aEmp : list) {
+			System.out.print(aEmp.getTypeID() + ",");
+			System.out.print(aEmp.getRoomType() + ",");
+			System.out.print(aEmp.getTypeName() + ",");
+			System.out.print(aEmp.getTypePrice() + ",");
+			System.out.print(aEmp.getSummary() + ",");
+		
+			// 注意以下三行的寫法 (優!)
+//			System.out.print(aEmp.getDeptVO().getDeptno() + ",");
+//			System.out.print(aEmp.getDeptVO().getDname() + ",");
+//			System.out.print(aEmp.getDeptVO().getLoc());
+//			System.out.println();
+		}
 
 	}
 
