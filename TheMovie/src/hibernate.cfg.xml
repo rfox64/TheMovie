@@ -32,10 +32,11 @@
 		<mapping resource="com/activity/model/activity.hbm.xml" />
 		<mapping resource="com/movie/model/movie.hbm.xml" />
 		<mapping resource="com/moviePIC/model/moviePIC.hbm.xml" />
-		<mapping resource="com/sales/model/sales2.hbm.xml" />
+		<mapping resource="com/sales/model/sales.hbm.xml" />
 		<mapping resource="com/member/model/Member.hbm.xml" />
 		<mapping resource="com/ticket/model/ticket.hbm.xml" />
 		<mapping resource="com/ticketType/model/ticketType.hbm.xml" />
+
 
 	</session-factory>
 	

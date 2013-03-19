@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC
+        "-//Apache Struts//XWork Validator 1.0.2//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+
+<validators>
+	<field name="salesVO.salesName">
+		<field-validator type="requiredstring"><!-- 需要 字串 -->
+			<param name="trim">true</param><!-- 預設為true -->
+			<message>員工姓名: 請勿空白</message>
+		</field-validator>
+		
+		<field-validator type="regex">
+			<param name="expression"><![CDATA[([\u4e00-\u9fa5\w]{2,10})]]></param>
+			<message>員工姓名:只能是中、英文字母、數字和_ , 且長度必需在2到10之間</message>
+		</field-validator>
+	</field>
+
+	<field name="salesVO.account">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param><!-- 預設為true -->
+			<message>員工帳號: 請勿空白</message>
+		</field-validator>
+		<field-validator type="stringlength">
+			<param name="minLength">8</param>
+			<message>員工帳號: 最少為八個字</message>
+		</field-validator>
+	</field>
+
+	<field name="salesVO.password">
+		<field-validator type="required">
+			<message>員工密碼: 請勿空白</message>
+		</field-validator>
+		<field-validator type="stringlength">
+			<param name="minLength">8</param>
+			<message>員工密碼: 最少為八個字</message>
+		</field-validator>
+	</field>
+
+<!-- 	<field name="salesVO.theaID">
+		<field-validator type="required">
+			<message>電影院代號: 請勿空白-請輸入數字</message>
+		</field-validator>
+	</field> -->
+
+	<field name="salesVO.activation">
+		<field-validator type="required">
+			<message>狀態代碼</message>
+		</field-validator>
+		<field-validator type="double">
+			<param name="minInclusive">0</param>
+			<param name="maxInclusive">999</param>
+			<message>狀態代碼: 請介於${minInclusive}與${maxInclusive}之間</message>
+		</field-validator>
+	</field>
+
+
+
+</validators>

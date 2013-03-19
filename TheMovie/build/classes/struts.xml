@@ -89,7 +89,44 @@
 <!-- 			<result>/free/HelloWorld.jsp</result> -->
 <!-- 		</action> -->
 <!-- 	</package> -->
-	
+
+
+	<package name="sales" namespace="/sales" extends="struts-default">
+
+	    <action name="addSales"   class="com.sales.controller.SalesAction"  method="add">
+	        <result name="success">/sales/listAllSales.jsp</result>
+            <result name="input">/sales/addSales.jsp</result>
+		</action>
+		
+		<action name="getOne_For_UpdateSales"   class="com.sales.controller.SalesIDAction"  method="getOne_For_Update">
+	        <result name="success">/sales/update_sales_input.jsp</result>
+            <result name="input">/sales/listAllSales.jsp</result>
+		</action>
+		
+		<action name="updateSales"   class="com.sales.controller.SalesAction"  method="update">
+	        <result name="success">/sales/listOneSales.jsp</result>
+            <result name="input">/sales/update_sales_input.jsp</result>
+		</action>
+		
+		<action name="deleteSales"   class="com.sales.controller.SalesIDAction"  method="delete">
+	        <result name="success">/sales/listAllSales.jsp</result>
+            <result name="input">/sales/listAllSales.jsp</result>
+		</action>
+				
+		<action name="getOne_For_DisplaySales"   class="com.sales.controller.SalesIDAction"  method="getOne_For_Display">
+	        <result name="success">/sales/listOneSales.jsp</result>
+            <result name="input">/sales/select_page.jsp</result>
+		</action>
+		
+		<action name="loginSales_stust"   class="com.sales.controller.SalesIDAction"  method="login_SalesIDAction">
+	        <result name="login">/sales/select_page.jsp</result>
+            <result name="input">/sales/login.jsp</result>
+		</action>
+		
+		
+		
+		
+</package>
 
 
 	
