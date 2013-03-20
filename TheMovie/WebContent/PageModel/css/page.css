@@ -1,0 +1,119 @@
+﻿#body {
+	background: #000000;
+}
+
+#allpage {
+	width: 1000px;
+	margin: 5px auto;
+	}
+	
+#menu {
+	width: 980px;
+	height: 55px;
+	margin-top: 10px;
+	background:"images/bg_image.jpg";
+}
+
+#article {
+	width: 980px;
+}
+
+#page {
+	width: 950px;
+	padding-top: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 80px;
+	background-color: #444444;
+	float: left;
+	border-radius: 3px;
+	box-shadow: 5px 5px 5px gray;
+	line-height: 20px;
+	font-size: 14px;
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: white;
+}
+
+
+
+#footer {
+	width: 980px;
+	height: 32px;
+	background-color: #CCCCCC;
+	font-size: 14px;
+	font-family: Arial, Helvetica, sans-serif;
+	line-height: 32px;
+	text-align: center;
+	color:#0300FA;
+	border-radius: 5px;
+}
+
+
+
+
+
+/* 以下Jquery按鈕的CSS, */
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+	margin:0;
+	padding:0;
+	border:0;
+	outline:0;
+}
+
+
+ol, ul {
+	list-style:none
+}
+blockquote, q {
+	quotes:none
+}
+blockquote:before, blockquote:after, q:before, q:after {
+	content:'';
+	content:none
+}
+:focus {
+	outline:0
+}
+table {
+	border-collapse:collapse;
+	border-spacing:0
+}
+div#demo {
+	margin: 10px auto 10px auto;
+/* 	text-align: center; */
+}
+
+div#demo ul#menu {
+    margin: 5px 0px;
+    list-style: none;
+    display: inline-block;
+}
+    
+div#demo ul#menu li {
+    padding: 0px;
+    float: left;
+    position: relative;
+    margin-left: 15px;
+    margin-right: 15px;
+    width: 48px;
+    height: 48px;
+    
+}
+
+div#demo ul#menu li a {
+	color:white;
+    position: absolute;
+}
+
+div#demo ul#menu li img {
+	padding-left: 10px;
+    position: absolute;
+    width: 48px;
+    top: 0px;
+    left: 0px;
+/*     padding: 0px; */
+    margin: 0 8px 0 0;
+    border: none;
+    overflow: hidden;
+}
