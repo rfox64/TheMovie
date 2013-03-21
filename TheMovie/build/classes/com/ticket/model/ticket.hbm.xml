@@ -8,15 +8,29 @@
 		<id name="ticketID" column="ticketID">
 			<generator class="identity"/>
 		</id>
-		<property name="roundsID" column="roundsID" />
+		
 		<property name="seatRow" column="seatRow" />
 		<property name="seatColumn" column="seatColumn" />
 		<property name="seatName" column="seatName" />
-		<property name="mbID" column="mbID" />
-		<property name="salesID" column="salesID" />
 		<property name="soldDateTime" column="soldDateTime" />
 		<property name="orderedDateTime" column="orderedDateTime" />
-		<property name="typeID" column="typeID" />
+		<property name="price" column="price" />
+		
+		<many-to-one name="memberVO" class="com.member.model.MemberVO" lazy="false">
+            <column name="mbID" />
+        </many-to-one>
+        
+        <many-to-one name="SalesVO" class="com.sales.model.SalesVO" lazy="false">
+            <column name="salesID" />
+        </many-to-one>
+        
+        <many-to-one name="ticketTypeVO" class="com.ticketType.model.TicketTypeVO" lazy="false">
+            <column name="typeID" />
+        </many-to-one>
+        
+        <many-to-one name="roundsVO" class="com.rounds.model.RoundsVO" lazy="false">
+            <column name="roundsID" />
+        </many-to-one>
 
 	</class>
 </hibernate-mapping>

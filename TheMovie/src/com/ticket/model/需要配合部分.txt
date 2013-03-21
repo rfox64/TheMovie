@@ -1,0 +1,161 @@
+﻿要運行ticket整套CURD   需要配合的部分  git中我只動改動我負責的ticket
+
+
+
+MemberDAO_interface.java 增加 method
+    public Set<TicketVO> getTicketByMbID(Integer mbID);//湟 修改處
+
+RoundsDAO_interface.java 增加 method
+	public Set<TicketVO> getTicketByRoundsID(Integer roundsID);//湟 修改處
+
+SalesDAO_interface.java 增加 method
+	public Set<TicketVO> getTicketBySalesID(Integer salesID);//湟 修改處
+
+TicketTypeDAO_interface.java 增加 method
+	public Set<TicketVO> getTicketByTypeID(Integer typeID);//湟 修改處
+		 
+
+MemberDAO.java 覆寫  MemberDAO_interface  的   getTicketByMbID 方法
+	public Set<TicketVO> getTicketByMbID(Integer mbID) {
+		Set<TicketVO>	set = findByPrimaryKey(mbID).getTickets();
+		return set;
+	}
+
+RoundsDAO.java 覆寫  RoundsDAO_interface  的   getTicketByRoundsID 方法
+	public Set<TicketVO> getTicketByRoundsID(Integer roundsID) {
+		Set<TicketVO>	set = findByPrimaryKey(roundsID).getTickets();
+		return set;
+	}
+ 
+SalesDAO.java  覆寫  SalesDAO_interface  的   getTicketBySalesID 方法
+	public Set<TicketVO> getTicketBySalesID(Integer salesID) {
+		Set<TicketVO>	set = findByPrimaryKey(salesID).getTickets();
+		return set;
+	
+	}
+ 
+
+TicketTypeDAO.java  覆寫  TicketTypeDAO_interface  的   getTicketByTypeID 方法
+	public Set<TicketVO> getTicketByTypeID(Integer typeID) {
+			Set<TicketVO>	set = selectByPK(typeID).getTickets();
+			return set;
+	}
+		
+MemberVO.java 中增加變數
+	private Set<TicketVO> tickets = new HashSet<TicketVO>();
+	
+	public Set<TicketVO> getTickets() {
+		return tickets;
+	}
+	public void setTickets(Set<TicketVO> tickets) {
+		this.tickets = tickets;
+	}
+		
+SalesVO.java 中增加變數		
+	private Set<TicketVO> tickets = new HashSet<TicketVO>();
+	
+	public Set<TicketVO> getTickets() {
+		return tickets;
+	}
+	public void setTickets(Set<TicketVO> tickets) {
+		this.tickets = tickets;
+	}		
+		
+RoundsVO.java 中增加變數	
+	private Set<TicketVO> tickets = new HashSet<TicketVO>();
+	
+	public Set<TicketVO> getTickets() {
+		return tickets;
+	}
+	public void setTickets(Set<TicketVO> tickets) {
+		this.tickets = tickets;
+	}
+	
+TicketTypeVO.java 中增加變數
+	private Set<TicketVO> tickets = new HashSet<TicketVO>();
+	
+	public Set<TicketVO> getTickets() {
+		return tickets;
+	}
+	public void setTickets(Set<TicketVO> tickets) {
+		this.tickets = tickets;
+	}
+	
+member.hbm.xml 中class內增加 
+		<set name="tickets" table="ticket" lazy="false" cascade="all"  inverse="true"  order-by="ticketID asc">			
+			<key>
+				<column name="mbID" />
+			</key>
+			<one-to-many class="com.ticket.model.TicketVO" />
+		</set>
+
+rounds.hbm.xml 中class內增加 
+		<set name="tickets" table="ticket" lazy="false" cascade="all"  inverse="true"  order-by="ticketID asc">			
+			<key>
+				<column name="roundsID" />
+			</key>
+			<one-to-many class="com.ticket.model.TicketVO" />
+		</set>
+
+sale.hbm.xml 中class內增加 
+        <set name="tickets" table="ticket" lazy="false" cascade="all"  inverse="true"  order-by="ticketID asc">			
+			<key>
+				<column name="salesID" />
+			</key>
+			<one-to-many class="com.ticket.model.TicketVO" />
+		</set>
+
+ticketType.hbm.xml 中class內增加 
+		<set name="tickets" table="ticketType" lazy="false" cascade="all"  inverse="true"  order-by="typeID asc">			
+			<key>
+				<column name="typeID" />
+			</key>
+			<one-to-many class="com.ticketType.model.TicketTypeVO" />
+		</set>
+		
+
+大家共同的部分在
+struts.xml中增加
+	<package name="ticket" namespace="/ticket" extends="struts-default">
+
+	    <action name="addTicket"   class="com.ticket.controller.TicketAction"  method="add">
+	        <result name="success">/ticket/listAllTicket.jsp</result>
+            <result name="input">/ticket/addTicket.jsp</result>
+		</action>
+		
+		<action name="getOne_For_UpdateTicket"   class="com.ticket.controller.TicketIDAction"  method="getOne_For_Update">
+	        <result name="success">/ticket/update_Ticket_input.jsp</result>
+            <result name="input">/ticket/listAllTicket.jsp</result>
+		</action>
+		
+		<action name="updateTicket"   class="com.ticket.controller.TicketAction"  method="update">
+	        <result name="success">/ticket/listOneTicket.jsp</result>
+            <result name="input">/ticket/update_Ticket_input.jsp</result>
+		</action>
+		
+		<action name="deleteTicket"   class="com.ticket.controller.TicketIDAction"  method="delete">
+	        <result name="success">/ticket/listAllTicket.jsp</result>
+            <result name="input">/ticket/listAllTicket.jsp</result>
+		</action>
+				
+		<action name="getOne_For_DisplayTicket"   class="com.ticket.controller.TicketIDAction"  method="getOne_For_Display">
+	        <result name="success">/ticket/listOneTicket.jsp</result>
+            <result name="input">/ticket/select_page.jsp</result>
+		</action>
+		
+		<action name="deleteMultipleTicket"   class="com.ticket.controller.TicketIDAction"  method="deleteMultipleTicket">
+	        <result name="success">/ticket/listAllTicket.jsp</result>
+            <result name="input">/ticket/listAllTicketForDelete.jsp</result>
+		</action>
+	</package>
+
+
+				
+				
+hibernate.cfg.xml中 ticketType需要mapping下面兩行
+		<mapping resource="com/ticketType/model/ticketType.hbm.xml" />
+		<mapping resource="com/theater/model/theater.hbm.xml" />
+		<mapping resource="com/sales/model/sales.hbm.xml"/>
+		<mapping resource="com/rounds/model/rounds.hbm.xml"/>
+		<mapping resource="com/ticket/model/ticket.hbm.xml"/>
+		<mapping resource="com/member/model/member.hbm.xml"/>

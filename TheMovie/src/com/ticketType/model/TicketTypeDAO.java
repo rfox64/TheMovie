@@ -3,9 +3,12 @@ package com.ticketType.model;
 import hibernate.util.HibernateUtil;
 
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+
+import com.ticket.model.TicketVO;
 
 
 public class TicketTypeDAO implements TicketTypeDAO_interface {
@@ -112,6 +115,12 @@ public class TicketTypeDAO implements TicketTypeDAO_interface {
 //			System.out.println();
 		}
 
+	}
+
+	@Override
+	public Set<TicketVO> getTicketByTypeID(Integer typeID) {
+			Set<TicketVO>	set = selectByPK(typeID).getTickets();
+			return set;
 	}
 
 	

@@ -16,7 +16,14 @@
 		<many-to-one name="theaterVO" class="com.theater.model.TheaterVO" lazy="false">
             <column name="theaID" />
         </many-to-one>
-
+		
+		<set name="tickets" table="ticketType" lazy="false" cascade="all"  inverse="true"  order-by="typeID asc">			
+			<key>
+				<column name="typeID" />
+			</key>
+			<one-to-many class="com.ticketType.model.TicketTypeVO" />
+		</set>
+		
 	</class>
 </hibernate-mapping>
 

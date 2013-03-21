@@ -1,5 +1,7 @@
 ﻿package com.ticket.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.ServletActionContext;
@@ -7,7 +9,6 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.ticket.model.TicketService;
 import com.ticket.model.TicketVO;
-import com.ticketType.model.TicketTypeService;
 
 public class TicketIDAction extends ActionSupport {
 	private Integer ticketID;
@@ -45,7 +46,7 @@ public class TicketIDAction extends ActionSupport {
 		TicketVO ticketVO = TicketSvc.selectByPKTicket(ticketID);
 		if (ticketVO != null) {
 			HttpServletRequest request = ServletActionContext.getRequest();
-			request.setAttribute("TicketVO", ticketVO);
+			request.setAttribute("ticketVO", ticketVO);
 			return true;
 		} else
 			return false;
@@ -55,6 +56,20 @@ public class TicketIDAction extends ActionSupport {
 		TicketService TicketSvc = new TicketService();
 		TicketSvc.deleteTicket(ticketID);
 		System.out.println(" 資料庫 delete 成功");
+		return "success";
+	}
+	
+	public String deleteMultipleTicket() {
+		
+
+		HttpServletRequest request = ServletActionContext.getRequest();
+		String[] ddf = request.getParameterValues("ticketVO.ticketID");
+		for(int i=0;i<ddf.length;i++){
+			TicketService TicketSvc = new TicketService();
+			System.out.println(Integer.parseInt(ddf[i]));
+			TicketSvc.deleteTicket(Integer.parseInt(ddf[i]));
+		}		
+		System.out.println(" 資料庫 deleteMultipleTicket 成功");
 		return "success";
 	}
 

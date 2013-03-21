@@ -2,17 +2,23 @@ package com.ticket.model;
 
 import java.sql.Timestamp;
 
+import com.member.model.MemberVO;
+import com.rounds.model.RoundsVO;
+import com.sales.model.SalesVO;
+import com.ticketType.model.TicketTypeVO;
+
 public class TicketVO implements java.io.Serializable{
 	private Integer ticketID;
-	private Integer roundsID;
 	private Integer seatRow;
 	private Integer seatColumn;
 	private String	seatName;
-	private Integer mbID;
-	private Integer salesID;
 	private Timestamp soldDateTime;
 	private Timestamp orderedDateTime;
-	private Integer typeID;
+	private Double price;
+	private RoundsVO roundsVO;
+	private MemberVO memberVO;
+	private SalesVO salesVO;
+	private TicketTypeVO ticketTypeVO;
 	
 	public String getSeatName() {
 		return seatName;
@@ -26,12 +32,7 @@ public class TicketVO implements java.io.Serializable{
 	public void setTicketID(Integer ticketID) {
 		this.ticketID = ticketID;
 	}
-	public Integer getRoundsID() {
-		return roundsID;
-	}
-	public void setRoundsID(Integer roundsID) {
-		this.roundsID = roundsID;
-	}
+	
 	public Integer getSeatRow() {
 		return seatRow;
 	}
@@ -44,18 +45,7 @@ public class TicketVO implements java.io.Serializable{
 	public void setSeatColumn(Integer seatColumn) {
 		this.seatColumn = seatColumn;
 	}
-	public Integer getMbID() {
-		return mbID;
-	}
-	public void setMbID(Integer mbID) {
-		this.mbID = mbID;
-	}
-	public Integer getSalesID() {
-		return salesID;
-	}
-	public void setSalesID(Integer salesID) {
-		this.salesID = salesID;
-	}
+	
 	public Timestamp getSoldDateTime() {
 		return soldDateTime;
 	}
@@ -68,11 +58,36 @@ public class TicketVO implements java.io.Serializable{
 	public void setOrderedDateTime(Timestamp orderedDateTime) {
 		this.orderedDateTime = orderedDateTime;
 	}
-	public Integer getTypeID() {
-		return typeID;
+	public Double getPrice() {
+		return price;
 	}
-	public void setTypeID(Integer typeID) {
-		this.typeID = typeID;
+	public void setPrice(Double price) {
+		this.price = price;
 	}
+	public RoundsVO getRoundsVO() {
+		return roundsVO;
+	}
+	public void setRoundsVO(RoundsVO roundsVO) {
+		this.roundsVO = roundsVO;
+	}
+	public MemberVO getMemberVO() {
+		return memberVO;
+	}
+	public void setMemberVO(MemberVO memberVO) {
+		this.memberVO = memberVO;
+	}
+	public SalesVO getSalesVO() {
+		return salesVO;
+	}
+	public void setSalesVO(SalesVO salesVO) {
+		this.salesVO = salesVO;
+	}
+	public TicketTypeVO getTicketTypeVO() {
+		return ticketTypeVO;
+	}
+	public void setTicketTypeVO(TicketTypeVO ticketTypeVO) {
+		this.ticketTypeVO = ticketTypeVO;
+	}
+
 	
 }

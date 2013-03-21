@@ -34,7 +34,9 @@ public class TicketDAO implements TicketDAO_interface {
 		try {
 			session.beginTransaction();
 			session.saveOrUpdate(ticketVO);
+			System.out.println("QQQ");
 			session.getTransaction().commit();
+			System.out.println("WWW");
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
 			throw ex;
@@ -85,7 +87,7 @@ public class TicketDAO implements TicketDAO_interface {
 			session.beginTransaction();
 
 			TicketVO ticketVO = new TicketVO();
-			ticketVO.setTypeID(ticketID);
+			ticketVO.setTicketID(ticketID);
 			session.delete(ticketVO);
 
 			session.getTransaction().commit();

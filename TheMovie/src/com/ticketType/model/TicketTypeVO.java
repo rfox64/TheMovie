@@ -1,6 +1,10 @@
 package com.ticketType.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import com.theater.model.TheaterVO;
+import com.ticket.model.TicketVO;
 
 public class TicketTypeVO implements java.io.Serializable{
 	private Integer typeID;
@@ -9,8 +13,14 @@ public class TicketTypeVO implements java.io.Serializable{
 	private Double typePrice;
 	private String summary;
 	private TheaterVO theaterVO;
+	private Set<TicketVO> tickets = new HashSet<TicketVO>();
 	
-	
+	public Set<TicketVO> getTickets() {
+		return tickets;
+	}
+	public void setTickets(Set<TicketVO> tickets) {
+		this.tickets = tickets;
+	}
 	public Integer getTypeID() {
 		return typeID;
 	}
